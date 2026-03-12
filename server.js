@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const dotenv = require ('dotenv');
 
 const{
-    createPlayer
+    createPlayer,
+    login,
+    updateScore
 }   = require('./controllers/playerController');
 
 
@@ -27,7 +29,9 @@ app.put('/', (req, res)=>{
     res.json({message: 'Welcome to Game Networking'});
 });
 
-app.post('/players', createPlayer);
+app.put('/players/:id', updateScore);
+app.post('/players/register', createPlayer);
+app.post('/players/login', login);
 
 app.delete('/', (req, res)=>{
     res.json({message: 'Welcome to Game Networking'});
